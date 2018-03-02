@@ -1,30 +1,36 @@
-html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
 
-.checkered-bg {
+.squares-bg {
     width: 100%;
     height: 100%;
     color: white;
 }
 
-.checkered-bg::before, .checkered-bg::after {
+.squares-bg::before, .squares-bg::after {
     content: "";
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     pointer-events: none;
     z-index: -1;
 }
 
-.checkered-bg::before {
+.squares-bg::before {
     background-image:
         linear-gradient(black 50%, transparent 50%),
         linear-gradient(to right, grey 50%, black 50%);
-        background-size: 20px 20px;
+        background-size: 30px 30px;
 }
 
-.checkered-bg::after {
+.squares-bg::after {
     background-image: linear-gradient(black, transparent);
 }
 
@@ -33,7 +39,7 @@ body {
 }
 
 h1 {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P';
     font-size: 50px;
     color: dimgrey;
     text-shadow: 3px 3px 5px red;
@@ -67,6 +73,10 @@ tr {
 
 td {
     width: 20px;
+}
+
+p {
+    margin: 0.75em 0 2em;
 }
 
 input[type=number] {

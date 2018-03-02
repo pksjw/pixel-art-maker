@@ -1,7 +1,8 @@
-// Select color input
-// Select size input
+// Create a grid that a user can color with clicks
+//   - allows grid size entry and color selection
 
 // When size is submitted by the user, call makeGrid()
+
 $("input[type='submit']").on('click', function makeGrid(event) {
     // prevent page refreshing when clicking submit
     event.preventDefault();
@@ -9,9 +10,10 @@ $("input[type='submit']").on('click', function makeGrid(event) {
     let grid = $('#pixelCanvas');
     let rows = $("#inputHeight").val();
     let columns = $("#inputWidth").val();
-    grid.children().remove(); // clean up any previous table rows that exsit
+    grid.children().remove(); // delete any previous table rows
 
 //Build the grid row by row
+
     for (let r=1; r <= rows; r++) {
         let tableRow = '<tr>';
         for (let c=1; c <= columns; c++) {
