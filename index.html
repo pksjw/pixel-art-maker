@@ -5,25 +5,38 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body class="squares-bg">
-    <h1>Lab: Pixel Art Maker</h1>
+    <div class="header">
+        <h1>Lab: Pixel Art Maker</h1>
+    </div>
+<div class="gridContainer">
+    <!-- <div class="header">
+        <h1>Lab: Pixel Art Maker</h1>
+    </div> -->
+    <div class="gridControl">
+        <h2>Choose Grid Size</h2>
+        <form id="sizePicker">
+            <span>Grid Height:</span>
+            <input type="number" id="inputHeight" name="height" min="1" value="15">
+            <br>
+            <span>Grid Width :</span>
+            <input type="number" id="inputWidth" name="width" min="1" value="15">
+            <br>
+            <input class="button" type="submit" value="Create Grid">
+        </form>
 
-    <h2>Choose Grid Size</h2>
-    <form id="sizePicker">
-        Grid Height:
-        <input type="number" id="inputHeight" name="height" min="1" value="15">
-        Grid Width:
-        <input type="number" id="inputWidth" name="width" min="1" value="15">
-        <input type="submit" value="New Grid">
-    </form>
-
-    <h2>Pick A Color</h2>
-    <input type="color" id="colorPicker" value="#ff0000">
-
-    <h2>Design Canvas</h2>
-    <table id="pixelCanvas"></table>
-    <p><em>(click on a square to add color or right click to clear it)</em></p>
+        <h2>Pick a Color</h2>
+        <br>
+        <input type="color" id="colorPicker" value="#ff0000">
+    </div> <!-- end input class -->
+    <div class="gridCanvas">
+        <h2>Design Canvas</h2>
+        <table id="pixelCanvas"></table>
+        <p><em>(click on a square to add color or right click to clear it)</em></p>
+    </div>
+</div> <!-- end cssGirdcontainer -->
     <script src="designs.js"></script>
 </body>
 </html>
