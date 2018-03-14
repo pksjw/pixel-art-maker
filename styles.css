@@ -1,12 +1,3 @@
-/* css Variables */
-
-:root {
-    --primary: grey;
-    --dark: dimgrey;
-    --darkrgba: rgba(105, 105, 105, 0.75);
-    --light: lightcoral;
-    --accent: red;
-}
 /* Base css */
 
 html,
@@ -16,7 +7,8 @@ body {
     width: 100%;
     height: 100%;
     text-align: center;
-    font-family: sans-serif;
+    text-shadow: 2px 2px 4px #000000;
+    font-family: sans-serif, Arial, Helvetica;
 }
 
 /* The squares classes are used to generate the background image of the page.*/
@@ -41,7 +33,7 @@ body {
 .squares-bg::before {
     background-image:
         linear-gradient(black 50%, transparent 50%),
-        linear-gradient(to right, var(--primary) 50%, black 50%);
+        linear-gradient(to right, grey 50%, black 50%);
         background-size: 25px 25px;
 }
 
@@ -54,35 +46,36 @@ body {
 .gridContainer {
     display:grid;
     grid-template-areas:
-    'control canvas';
+        'control canvas';
     grid-template-columns: minmax(300px, 300px) minmax(400px, 1fr);
-    grid-template-rows: auto auto ;
+    grid-template-rows: auto;
     grid-gap: 15px;
 }
 
 .gridControl {
     grid-area: control;
-    height: 290px;
-    background: var(--darkrgba);
+    height: 410px;
+    background: rgba(105, 105, 105, 0.85); /*dimgrey*/
     border-radius: 7px;
-    margin: 0 0 20px 15px;
+    margin: 0 15px 20px 15px;
     box-shadow: 2px 2px 5px rgba(77, 77, 77, 0.8);
 }
 
 .gridCanvas {
     grid-area: canvas;
-    background: var(--darkrgba);
+    background: rgba(105, 105, 105, 0.85); /*dimgrey*/
     border-radius: 7px;
-    margin: 0 15px 20px 0;
+    margin: 0 15px 20px 15px;
     box-shadow: 2px 2px 5px rgba(77, 77, 77, 0.8);
 }
 
 h1 {
     font-family: 'Press Start 2P';
     font-size: 45px;
-    color: var(--dark);
-    text-shadow: 3px 3px 5px var(--accent);
-    margin: 0.75em 0 0.75em 0;
+    color: dimgrey;
+    padding-top:15px;
+    text-shadow: 3px 3px 5px red;
+    margin: 0.5em 0 0.75em 0;
 }
 
 h2 {
@@ -90,9 +83,12 @@ h2 {
 }
 
 h2:nth-of-type(2) {
-  display: inline;
+    display: inline;
 }
 
+h2:nth-of-type(3) {
+    display: inline;
+}
 table,
 tr,
 td {
@@ -118,48 +114,175 @@ p {
     margin: 1em 0 1em;
 }
 
-span {
+.legend {
+    display: none;
+}
+
+.gridSizeLabel {
     font-size: 18px;
 }
 
 .button {
-    margin: 0.75em 0 1.5em 0;
     display: inline-block;
+    margin-top: 0.5em;
     padding: 7px 22px;
+    background: transparent;
     font-size: 18px;
     cursor: pointer;
     text-align: center;
-    text-decoration: none;
+    text-shadow: 2px 2px 4px #000000;
     outline: none;
-    color: #fff;
-    background-color: var(--primary);
+    color: white;
+    background-color: grey;
     border: none;
     border-radius: 5px;
-    box-shadow: 0 3px var(--accent);
+    box-shadow: 0 3px red;
 }
 
 .button:hover {
-    background-color: var(--dark);
+    background-color: dimgrey;
 }
 
 .button:active {
-    background-color: var(--dark);
-    box-shadow: 0 3px var(--light);
+    background-color: dimgrey;
+    box-shadow: 0 3px lightcoral;
     transform: translateY(3px);
 }
-input[type=number] {
-    width: 6em;
-    font-size: 16px;
-    border: none;
-    border-radius:4px;
-    margin: 0 0.25em 1em;
+
+#paintBtn {
+    margin-right: 10px;
 }
 
 input[type=color] {
-    margin: 1em 0 1em 0;
+    margin: 1.5em 0 1em 0.25em;
+    border: 1px solid darkgray;
+    background-color: grey;
+    cursor: pointer;
 }
 
-@media (max-width: 500px) {
+/* Range input thumb and track styling: browser specific */
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 95%;
+    margin: 16px 0;
+    padding: 0; /* corrects spacing issue IE11 */
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px black, 0px 0px 1px #0d0d0d;
+    background: red;
+    border-radius: 2px;
+    border: 0.5px solid #010101;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px #0d0d0d;
+    border: 1px solid black;
+    height: 24px;
+    width: 12px;
+    border-radius: 3px;
+    background: grey;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -9px;
+}
+
+input[type=range]:hover::-webkit-slider-thumb {
+    background: dimgrey;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: red;
+}
+
+input[type=range]::-moz-range-track {
+    width: 95%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px black, 0px 0px 1px #0d0d0d;
+    background: red;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px #0d0d0d;
+    border: 1px solid black;
+    height: 24px;
+    width: 12px;
+    border-radius: 3px;
+    background: grey;
+    cursor: pointer;
+}
+
+input[type=range]:hover::-moz-range-thumb {
+    background: dimgrey;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    border-width: 10px;
+    color: transparent;
+    margin: -4px;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: red;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px black, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: red;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px black, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px black, 0px 0px 1px #0d0d0d;
+    border: 1px solid black;
+    height: 19px;
+    width: 10px;
+    border-radius: 3px;
+    background: grey;
+    cursor: pointer;
+    margin: 0;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: red;
+}
+
+input[type=range]::-ms-tooltip {
+    display: none;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: red;
+}
+
+input[type=range]:hover::-ms-thumb {
+    background: dimgrey;
+}
+
+@media (max-width: 700px) {
     .gridContainer {
         grid-template-areas:
             'control'
@@ -176,10 +299,10 @@ input[type=color] {
     }
 
     .gridControl {
-         margin: 0 15px 20px 15px;
+        margin: 0 15px 20px 15px;
     }
 
     .gridCanvas {
-         margin: 0 15px 20px 15px;
+        margin: 0 15px 20px 15px;
     }
 }
