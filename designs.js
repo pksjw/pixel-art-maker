@@ -4,10 +4,11 @@
 // When size is submitted by the user, call makeGrid()
 
 // Set the inital 'paint' changes happen in click event
+const PAINT = 'PAINT';
+const ERASE = 'ERASE';
+let gridTileMode = PAINT // controls paint or erase of grid cells (td's)
 
-let gridTileMode = "PAINT" // controls paint or erase of grid cells (td's)
-
-$('input[type="submit"]').on('click', function makeGrid(event) {
+$('#createGrid').on('click', function makeGrid(event) {
     // prevent page refreshing when clicking submit
     event.preventDefault();
     let mouseIsDown = false;
@@ -43,7 +44,7 @@ $('input[type="submit"]').on('click', function makeGrid(event) {
 
     grid.on('mousedown', function(event) {
         event.preventDefault();
-        event.which === 1 ? mouseIsDown = true : mouseIsDown = false;
+        mouseIsDown = event.which === 1 ? true : false;
     });
 
     grid.on('mouseup', function() {
@@ -58,9 +59,9 @@ $('input[type="submit"]').on('click', function makeGrid(event) {
 // paint or erase cells based on the mode (girdTileMode)
 
 function paintEraseTiles(targetCell) {
-        if (gridTileMode === 'PAINT') {
+    if (gridTileMode === PAINT) {
         $(targetCell).css('background-color', $('#colorPicker').val());
-    } else if (gridTileMode === 'ERASE') {
+    } else if (gridTileMode === ERASE) {
         $(targetCell).css('background-color', 'transparent');
     }
 }
@@ -74,14 +75,13 @@ function paintEraseTiles(targetCell) {
     });
 
     $('#colorPicker').on('input', function() {
-        gridTileMode = 'PAINT';
+        gridTileMode = PAINT;
         $('.paintOrErase').text(' ' + gridTileMode);
     });
 
 // set the mode to PAINT or ERASE
 
     $('button').on('click', function(event) {
-        let idClicked = event.currentTarget.id;
-        idClicked === 'paintBtn' ? gridTileMode = 'PAINT' : gridTileMode = 'ERASE';
+        gridTileMode = event.currentTarget.id === 'paintBtn' ? PAINT : ERASE;
         $('.paintOrErase').text(' ' + gridTileMode);
     }); // end button on click
