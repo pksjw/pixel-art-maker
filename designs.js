@@ -14,6 +14,7 @@ const displayHeight = $('#gridHeightDisplay');
 const displayWidth = $('#gridWidthDisplay');
 const userColor = $('#colorPicker');
 const tileMode = $('.paintOrErase');
+const clear = $('#clearGrid');
 
 let gridTileMode = PAINT // controls paint or erase of grid cells (td's)
 
@@ -81,11 +82,18 @@ userWidth.on('input', function() {
 userColor.on('input', function() {
     gridTileMode = PAINT;
     tileMode.text(' ' + gridTileMode);
-    });
+});
+
+// Erase colors from the grid
+
+clear.on('click', function() {
+    grid.children().children().removeAttr("style");
+});
 
 // set the mode to PAINT or ERASE
 
-$('button').on('click', function(event) {
-    gridTileMode = event.currentTarget.id === 'paintBtn' ? PAINT : ERASE;
+$('#mode').on('click', function(event) {
+    gridTileMode = event.target.className.indexOf('paint') >=0 ? PAINT : ERASE;
+    // gridTileMode = event.target.id === 'paintBtn' ? PAINT : ERASE;
     tileMode.text(' ' + gridTileMode);
 }); // end button on click
