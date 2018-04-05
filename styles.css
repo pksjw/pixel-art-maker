@@ -283,6 +283,41 @@ input[type=range]:hover::-ms-thumb {
     background: dimgrey;
 }
 
+/* text fly in effect */
+
+.flyItIn {
+    animation: flyin 1s ease forwards;
+    opacity: 0;
+    transform: scale(2);
+    filter: blur(4px);
+}
+
+@keyframes flyin {
+    to {
+        filter: blur(0);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* A second flyItIn class is need to get the grid to fly in */
+
+.flyItIn2 {
+    animation: flyin2 1s ease forwards;
+    opacity: 0;
+    transform: scale(2);
+    filter: blur(4px);
+}
+
+@keyframes flyin2 {
+    to {
+        filter: blur(0);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+/* make adjustments for smaller devices */
+
 @media (max-width: 700px) {
     .gridContainer {
         grid-template-areas:

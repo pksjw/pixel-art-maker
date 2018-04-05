@@ -3,7 +3,7 @@
 
 // When size is submitted by the user, call makeGrid()
 
-// Set the inital 'paint' changes happen in click event
+// Cache selectors and other stable values for later use
 const PAINT = 'PAINT';
 const ERASE = 'ERASE';
 const doc = $(document);
@@ -42,6 +42,8 @@ $('#createGrid').on('click', function makeGrid(event) {
     } // end while loop
     grid.append(tableRows); // add grid to DOM
     $('.legend').show(); // <p> tag with instructions for mouseover
+        grid.toggleClass('flyItIn'); // Fly in effect for table
+        grid.toggleClass('flyItIn2'); // use two to trigger reflow
 
 // Listen for click to paint or erase a tile
 
