@@ -7,6 +7,7 @@
 const PAINT = 'PAINT';
 const ERASE = 'ERASE';
 const doc = $(document);
+const gridCanvas = $('#gridCanvas');
 const grid = $('#pixelCanvas');
 const userHeight = $('#inputHeight');
 const userWidth = $('#inputWidth');
@@ -89,6 +90,7 @@ userColor.on('input', function() {
 // Erase colors from the grid
 
 clear.on('click', function() {
+    gridCanvas.toggleClass('rotateCanvas');
     grid.children().children().removeAttr("style");
 });
 
